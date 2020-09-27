@@ -3,6 +3,9 @@ import generated.MonkeyParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,16 +22,16 @@ public class Main {
             instParser.program();
             System.out.println("Compilacion Terminada");
         }catch(Exception e){System.out.println("No hay archivo");e.printStackTrace();}
-
-    /*    List<Token> lista = (List<Token>) inst.getAllTokens();
+/*
+        List<Token> lista = ( List<Token> ) inst.getAllTokens();
 
         for (Token t : lista)
             System.out.println(inst.ruleNames[t.getType()-1] + ":" + t.getText() + "\n");
+*/
+        //inst = new MonkeyGrammar (input);
+        //inst.reset();
 
-        // inst = new Scanner(input);
-        // inst.reset();
 
-     */
     }
 }
 
