@@ -1,1 +1,1 @@
-let var1 = if ;
+let var1 =5;

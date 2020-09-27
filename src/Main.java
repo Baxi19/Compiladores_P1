@@ -22,12 +22,12 @@ public class Main {
             instParser.program();
             System.out.println("Compilacion Terminada");
         }catch(Exception e){System.out.println("No hay archivo");e.printStackTrace();}
-/*
+
         List<Token> lista = ( List<Token> ) inst.getAllTokens();
 
         for (Token t : lista)
             System.out.println(inst.ruleNames[t.getType()-1] + ":" + t.getText() + "\n");
-*/
+
         //inst = new MonkeyGrammar (input);
         //inst.reset();
 
