@@ -9,45 +9,45 @@ options {
 //-------------------------------------------------------------------------------------------------------------------
 //                               Grammar for Monkey Language
 //-------------------------------------------------------------------------------------------------------------------
-program  	                    : statement*;
+program  	                    : statement*                                                                            #program_StatementAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-statement  	                    : LET letStatement
-                                | RETURN returnStatement
-                                | expressionStatement;
+statement  	                    : LET letStatement                                                                      #statement_let_LetStatementAST
+                                | RETURN returnStatement                                                                #statement_return_ReturnStatementAST
+                                | expressionStatement                                                                   #statement_ExpressionStatementAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-letStatement                    : IDENT ASSIGN expression PYCOMMA ?;
+letStatement                    : IDENT ASSIGN expression PYCOMMA ?                                                     #letStatement_ident_assing_Expression_pycommaAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-returnStatement	                : expression PYCOMMA ?;
+returnStatement	                : expression PYCOMMA ?                                                                  #returnStatement_Expression_pycommaAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-expressionStatement             : expression PYCOMMA ?;
+expressionStatement             : expression PYCOMMA ?                                                                  #expressionStatement_Expression_pycommaAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-expression                      : additionExpression comparison;
+expression                      : additionExpression comparison                                                         #expression_AdditionExpression_ComparisonAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-comparison                      : ((LT|GT|LE|GE|EQUAL) additionExpression)*;
+comparison                      : ((LT|GT|LE|GE|EQUAL) additionExpression)*                                             #comparison_simbols_AdditionExpressionAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-additionExpression	            : multiplicationExpression additionFactor;
+additionExpression	            : multiplicationExpression additionFactor                                               #additionExpression_MultiplicationExpression_AdditionFactorAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-additionFactor                  : ((ADD|SUB) multiplicationExpression)*;
+additionFactor                  : ((ADD|SUB) multiplicationExpression)*                                                 #additionFactor_add_v_sub_MultiplicationExpressionAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-multiplicationExpression        : elementExpression multiplicationFactor;
+multiplicationExpression        : elementExpression multiplicationFactor                                                #multiplicationExpression_ElementExpression_MultiplicationFactorAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-multiplicationFactor            : ((MUL|DIV) elementExpression)*;
+multiplicationFactor            : ((MUL|DIV) elementExpression)*                                                        #multiplicationFactor_mul_v_div_ElementExpressionAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-elementExpression               : primitiveExpression (elementAccess | callExpression) ?;
+elementExpression               : primitiveExpression (elementAccess | callExpression) ?                                #elementExpression_PrimitiveExpression_ElementAccess_v_CallExpressionAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-elementAccess                   : L_BRACK expression R_BRACK;
+elementAccess                   : L_BRACK expression R_BRACK                                                            ;
 
 //-------------------------------------------------------------------------------------------------------------------
 callExpression	                : L_PAREN expressionList R_PAREN;
