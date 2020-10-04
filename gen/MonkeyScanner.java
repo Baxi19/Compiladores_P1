@@ -1,5 +1,4 @@
-// Generated from C:/Users/Baxi/Desktop/Compiladores_P1\MonkeyGrammar.g4 by ANTLR 4.8
-package generated;
+// Generated from C:/Users/Baxi/Desktop/Compiladores_P1\MonkeyScanner.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +9,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class MonkeyGrammar extends Lexer {
+public class MonkeyScanner extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -19,9 +18,9 @@ public class MonkeyGrammar extends Lexer {
 	public static final int
 		LET=1, RETURN=2, FN=3, PUTS=4, IF=5, ELSE=6, LEN=7, FIRST=8, LAST=9, REST=10, 
 		PUSH=11, L_PAREN=12, R_PAREN=13, L_BRACE=14, R_BRACE=15, L_BRACK=16, R_BRACK=17, 
-		PYCOMMA=18, COMMA=19, COLON=20, ASSIGN=21, GT=22, LT=23, LE=24, GE=25, 
-		EQUAL=26, ADD=27, SUB=28, MUL=29, DIV=30, TRUE=31, FALSE=32, NUMBER=33, 
-		STRING=34, IDENT=35, WS=36, BLOCK_COMMENT=37, COMMENT=38;
+		PYCOMMA=18, COMMA=19, COLON=20, LE=21, GE=22, EQUAL=23, GT=24, LT=25, 
+		ASSIGN=26, ADD=27, SUB=28, MUL=29, DIV=30, TRUE=31, FALSE=32, NUMBER=33, 
+		STRING=34, IDENT=35, WS=36, BLOCK_COMMENT=37, SINGLE_COMMENT=38;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -34,9 +33,9 @@ public class MonkeyGrammar extends Lexer {
 		return new String[] {
 			"LET", "RETURN", "FN", "PUTS", "IF", "ELSE", "LEN", "FIRST", "LAST", 
 			"REST", "PUSH", "L_PAREN", "R_PAREN", "L_BRACE", "R_BRACE", "L_BRACK", 
-			"R_BRACK", "PYCOMMA", "COMMA", "COLON", "ASSIGN", "GT", "LT", "LE", "GE", 
-			"EQUAL", "ADD", "SUB", "MUL", "DIV", "TRUE", "FALSE", "NUMBER", "STRING", 
-			"IDENT", "WS", "BLOCK_COMMENT", "COMMENT"
+			"R_BRACK", "PYCOMMA", "COMMA", "COLON", "LE", "GE", "EQUAL", "GT", "LT", 
+			"ASSIGN", "ADD", "SUB", "MUL", "DIV", "TRUE", "FALSE", "NUMBER", "STRING", 
+			"IDENT", "WS", "BLOCK_COMMENT", "SINGLE_COMMENT"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -45,8 +44,8 @@ public class MonkeyGrammar extends Lexer {
 		return new String[] {
 			null, "'let'", "'return'", "'fn'", "'puts'", "'if'", "'else'", "'len'", 
 			"'first'", "'last'", "'rest'", "'push'", "'('", "')'", "'{'", "'}'", 
-			"'['", "']'", "';'", "','", "':'", "'='", "'>'", "'<'", "'<='", "'>='", 
-			"'=='", "'+'", "'-'", "'*'", "'/'", "'true'", "'false'"
+			"'['", "']'", "';'", "','", "':'", "'<='", "'>='", "'=='", "'>'", "'<'", 
+			"'='", "'+'", "'-'", "'*'", "'/'", "'true'", "'false'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -54,9 +53,9 @@ public class MonkeyGrammar extends Lexer {
 		return new String[] {
 			null, "LET", "RETURN", "FN", "PUTS", "IF", "ELSE", "LEN", "FIRST", "LAST", 
 			"REST", "PUSH", "L_PAREN", "R_PAREN", "L_BRACE", "R_BRACE", "L_BRACK", 
-			"R_BRACK", "PYCOMMA", "COMMA", "COLON", "ASSIGN", "GT", "LT", "LE", "GE", 
-			"EQUAL", "ADD", "SUB", "MUL", "DIV", "TRUE", "FALSE", "NUMBER", "STRING", 
-			"IDENT", "WS", "BLOCK_COMMENT", "COMMENT"
+			"R_BRACK", "PYCOMMA", "COMMA", "COLON", "LE", "GE", "EQUAL", "GT", "LT", 
+			"ASSIGN", "ADD", "SUB", "MUL", "DIV", "TRUE", "FALSE", "NUMBER", "STRING", 
+			"IDENT", "WS", "BLOCK_COMMENT", "SINGLE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -94,13 +93,13 @@ public class MonkeyGrammar extends Lexer {
 	}
 
 
-	public MonkeyGrammar(CharStream input) {
+	public MonkeyScanner(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "MonkeyGrammar.g4"; }
+	public String getGrammarFileName() { return "MonkeyScanner.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -128,7 +127,7 @@ public class MonkeyGrammar extends Lexer {
 		"\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3"+
 		"\n\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\16\3\16\3\17"+
 		"\3\17\3\20\3\20\3\21\3\21\3\22\3\22\3\23\3\23\3\24\3\24\3\25\3\25\3\26"+
-		"\3\26\3\27\3\27\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\33\3\33\3\33"+
+		"\3\26\3\26\3\27\3\27\3\27\3\30\3\30\3\30\3\31\3\31\3\32\3\32\3\33\3\33"+
 		"\3\34\3\34\3\35\3\35\3\36\3\36\3\37\3\37\3 \3 \3 \3 \3 \3!\3!\3!\3!\3"+
 		"!\3!\3\"\3\"\7\"\u00ba\n\"\f\"\16\"\u00bd\13\"\3#\3#\6#\u00c1\n#\r#\16"+
 		"#\u00c2\3#\3#\3$\3$\7$\u00c9\n$\f$\16$\u00cc\13$\3%\6%\u00cf\n%\r%\16"+
@@ -148,8 +147,8 @@ public class MonkeyGrammar extends Lexer {
 		"\2\2\2\13b\3\2\2\2\re\3\2\2\2\17j\3\2\2\2\21n\3\2\2\2\23t\3\2\2\2\25y"+
 		"\3\2\2\2\27~\3\2\2\2\31\u0083\3\2\2\2\33\u0085\3\2\2\2\35\u0087\3\2\2"+
 		"\2\37\u0089\3\2\2\2!\u008b\3\2\2\2#\u008d\3\2\2\2%\u008f\3\2\2\2\'\u0091"+
-		"\3\2\2\2)\u0093\3\2\2\2+\u0095\3\2\2\2-\u0097\3\2\2\2/\u0099\3\2\2\2\61"+
-		"\u009b\3\2\2\2\63\u009e\3\2\2\2\65\u00a1\3\2\2\2\67\u00a4\3\2\2\29\u00a6"+
+		"\3\2\2\2)\u0093\3\2\2\2+\u0095\3\2\2\2-\u0098\3\2\2\2/\u009b\3\2\2\2\61"+
+		"\u009e\3\2\2\2\63\u00a0\3\2\2\2\65\u00a2\3\2\2\2\67\u00a4\3\2\2\29\u00a6"+
 		"\3\2\2\2;\u00a8\3\2\2\2=\u00aa\3\2\2\2?\u00ac\3\2\2\2A\u00b1\3\2\2\2C"+
 		"\u00b7\3\2\2\2E\u00be\3\2\2\2G\u00c6\3\2\2\2I\u00ce\3\2\2\2K\u00d4\3\2"+
 		"\2\2M\u00e2\3\2\2\2OP\7n\2\2PQ\7g\2\2QR\7v\2\2R\4\3\2\2\2ST\7t\2\2TU\7"+
@@ -164,13 +163,13 @@ public class MonkeyGrammar extends Lexer {
 		"\7}\2\2\u0088\36\3\2\2\2\u0089\u008a\7\177\2\2\u008a \3\2\2\2\u008b\u008c"+
 		"\7]\2\2\u008c\"\3\2\2\2\u008d\u008e\7_\2\2\u008e$\3\2\2\2\u008f\u0090"+
 		"\7=\2\2\u0090&\3\2\2\2\u0091\u0092\7.\2\2\u0092(\3\2\2\2\u0093\u0094\7"+
-		"<\2\2\u0094*\3\2\2\2\u0095\u0096\7?\2\2\u0096,\3\2\2\2\u0097\u0098\7@"+
-		"\2\2\u0098.\3\2\2\2\u0099\u009a\7>\2\2\u009a\60\3\2\2\2\u009b\u009c\7"+
-		">\2\2\u009c\u009d\7?\2\2\u009d\62\3\2\2\2\u009e\u009f\7@\2\2\u009f\u00a0"+
-		"\7?\2\2\u00a0\64\3\2\2\2\u00a1\u00a2\7?\2\2\u00a2\u00a3\7?\2\2\u00a3\66"+
-		"\3\2\2\2\u00a4\u00a5\7-\2\2\u00a58\3\2\2\2\u00a6\u00a7\7/\2\2\u00a7:\3"+
-		"\2\2\2\u00a8\u00a9\7,\2\2\u00a9<\3\2\2\2\u00aa\u00ab\7\61\2\2\u00ab>\3"+
-		"\2\2\2\u00ac\u00ad\7v\2\2\u00ad\u00ae\7t\2\2\u00ae\u00af\7w\2\2\u00af"+
+		"<\2\2\u0094*\3\2\2\2\u0095\u0096\7>\2\2\u0096\u0097\7?\2\2\u0097,\3\2"+
+		"\2\2\u0098\u0099\7@\2\2\u0099\u009a\7?\2\2\u009a.\3\2\2\2\u009b\u009c"+
+		"\7?\2\2\u009c\u009d\7?\2\2\u009d\60\3\2\2\2\u009e\u009f\7@\2\2\u009f\62"+
+		"\3\2\2\2\u00a0\u00a1\7>\2\2\u00a1\64\3\2\2\2\u00a2\u00a3\7?\2\2\u00a3"+
+		"\66\3\2\2\2\u00a4\u00a5\7-\2\2\u00a58\3\2\2\2\u00a6\u00a7\7/\2\2\u00a7"+
+		":\3\2\2\2\u00a8\u00a9\7,\2\2\u00a9<\3\2\2\2\u00aa\u00ab\7\61\2\2\u00ab"+
+		">\3\2\2\2\u00ac\u00ad\7v\2\2\u00ad\u00ae\7t\2\2\u00ae\u00af\7w\2\2\u00af"+
 		"\u00b0\7g\2\2\u00b0@\3\2\2\2\u00b1\u00b2\7h\2\2\u00b2\u00b3\7c\2\2\u00b3"+
 		"\u00b4\7n\2\2\u00b4\u00b5\7u\2\2\u00b5\u00b6\7g\2\2\u00b6B\3\2\2\2\u00b7"+
 		"\u00bb\t\2\2\2\u00b8\u00ba\t\3\2\2\u00b9\u00b8\3\2\2\2\u00ba\u00bd\3\2"+

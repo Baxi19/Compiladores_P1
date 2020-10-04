@@ -1,1 +1,1 @@
-let var1 = 5;
+let var1 = 3

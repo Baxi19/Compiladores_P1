@@ -1,48 +1,44 @@
-import generated.MonkeyGrammar;
 import generated.MonkeyParser;
+import generated.MonkeyScanner;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
 
-import java.util.List;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        MonkeyParser instParser = null;
-        MonkeyGrammar inst = null;
+        MonkeyParser parser = null;
+        MonkeyScanner scanner = null;
         CharStream input=null;
         CommonTokenStream tokens = null;
-
+        ParseTree tree;
         try {
             input = CharStreams.fromFileName("test.txt");
-            inst = new generated.MonkeyGrammar(input);
-            tokens = new CommonTokenStream(inst);
-            instParser = new MonkeyParser(tokens);
-            instParser.program();
-            System.out.println("Compilacion Terminada");
+            scanner = new generated.MonkeyScanner(input);
+            tokens = new CommonTokenStream(scanner);
+            parser = new MonkeyParser(tokens);
+
+            MonkeyErrorListener errorListener = new MonkeyErrorListener();
+            scanner.removeErrorListeners();
+            parser.removeErrorListeners();
+            scanner.addErrorListener(errorListener);
+            parser.addErrorListener(errorListener);
+            tree = parser.program();
+
+            if(errorListener.hasErrors()){
+                System.out.println("Compilation: Failed");
+                System.out.println(errorListener.toString());
+            }
+            else{
+                java.util.concurrent.Future<JFrame> treeGUI = org.antlr.v4.gui.Trees.inspect(tree, parser);
+                treeGUI.get().setVisible(true);
+                System.out.println("Compilation: Successful");
+            }
         }catch(Exception e){
-            System.out.println("No hay archivo");e.printStackTrace();
+            System.out.println("The file doesn't exist!");e.printStackTrace();
         }
-
-
-        /*
-        MonkeyGrammar inst = null;
-        CharStream input=null;
-        //CommonTokenStream tokens = null;
-        try {
-            input = CharStreams.fromFileName("test.txt");
-            inst = new generated.MonkeyGrammar(input);
-            //tokens = new CommonTokenStream(inst);
-        }
-        catch(Exception e){System.out.println("No hay archivo");e.printStackTrace();}
-        List<Token> lista = (List<Token>) inst.getAllTokens();
-        for (Token t : lista)
-            System.out.println(inst.ruleNames[t.getType()-1] + ":" + t.getText() + "\n");
-
-        //inst = new MonkeyGrammar (input);
-        //inst.reset();
-        */
     }
 }
 

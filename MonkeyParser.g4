@@ -3,111 +3,124 @@
 parser grammar MonkeyParser;
 
 options {
-    tokenVocab = MonkeyGrammar;
+    tokenVocab = MonkeyScanner;
 }
 
 //-------------------------------------------------------------------------------------------------------------------
 //                               Grammar for Monkey Language
 //-------------------------------------------------------------------------------------------------------------------
-program  	                    : statement*                                                                            #program_StatementAST;
+program  	                    : statement*                                                                            #program_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-statement  	                    : LET letStatement                                                                      #statement_let_LetStatementAST
-                                | RETURN returnStatement                                                                #statement_return_ReturnStatementAST
-                                | expressionStatement                                                                   #statement_ExpressionStatementAST;
+statement  	                    : LET letStatement                                                                      #statement_LetAST
+                                | RETURN returnStatement                                                                #statement_returnAST
+                                | expressionStatement                                                                   #callExpressionStatementAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-letStatement                    : IDENT ASSIGN expression PYCOMMA ?                                                     #letStatement_ident_assing_Expression_pycommaAST;
+letStatement                    : IDENT ASSIGN expression (PYCOMMA | )                                                  #letStatement_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-returnStatement	                : expression PYCOMMA ?                                                                  #returnStatement_Expression_pycommaAST;
+returnStatement	                : expression (PYCOMMA | )                                                               #returnStatement_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-expressionStatement             : expression PYCOMMA ?                                                                  #expressionStatement_Expression_pycommaAST;
+expressionStatement             : expression (PYCOMMA | )                                                               #expressionStatement_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-expression                      : additionExpression comparison                                                         #expression_AdditionExpression_ComparisonAST;
+expression                      : additionExpression comparison                                                         #expression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-comparison                      : ((LT|GT|LE|GE|EQUAL) additionExpression)*                                             #comparison_simbols_AdditionExpressionAST;
+comparison                      : ((LT|GT|LE|GE|EQUAL) additionExpression)*                                             #comparison_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-additionExpression	            : multiplicationExpression additionFactor                                               #additionExpression_MultiplicationExpression_AdditionFactorAST;
+additionExpression	            : multiplicationExpression additionFactor                                               #additionExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-additionFactor                  : ((ADD|SUB) multiplicationExpression)*                                                 #additionFactor_add_v_sub_MultiplicationExpressionAST;
+additionFactor                  : ((ADD|SUB) multiplicationExpression)*                                                 #additionFactor_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-multiplicationExpression        : elementExpression multiplicationFactor                                                #multiplicationExpression_ElementExpression_MultiplicationFactorAST;
+multiplicationExpression        : elementExpression multiplicationFactor                                                #multiplicationExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-multiplicationFactor            : ((MUL|DIV) elementExpression)*                                                        #multiplicationFactor_mul_v_div_ElementExpressionAST;
+multiplicationFactor            : ((MUL|DIV) elementExpression)*                                                        #multiplicationFactor_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-elementExpression               : primitiveExpression (elementAccess | callExpression) ?                                #elementExpression_PrimitiveExpression_ElementAccess_v_CallExpressionAST;
+elementExpression               : primitiveExpression (elementAccess | callExpression | )                               #elementExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-elementAccess                   : L_BRACK expression R_BRACK                                                            ;
+//[...]
+elementAccess                   : L_BRACK expression R_BRACK                                                            #elementAccess_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-callExpression	                : L_PAREN expressionList R_PAREN;
+//(...)
+callExpression	                : L_PAREN expressionList R_PAREN                                                        #callExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-primitiveExpression	            : NUMBER
-                                | STRING
-                                | IDENT
-                                | TRUE
-                                | FALSE
-                                | L_PAREN expression R_PAREN
-                                | arrayLiteral
-                                | arrayFunctions L_PAREN expressionList R_PAREN
-                                | functionLiteral
-                                | hashLiteral
-                                | printExpression
-                                | ifExpression;
+primitiveExpression	            : NUMBER                                                                                #primitiveExpression_numberAST
+                                | STRING                                                                                #primitiveExpression_stringAST
+                                | IDENT                                                                                 #primitiveExpression_identAST
+                                | TRUE                                                                                  #primitiveExpression_trueAST
+                                | FALSE                                                                                 #primitiveExpression_falseAST
+                                | L_PAREN expression R_PAREN                                                            #primitiveExpression_expressionAST
+                                | arrayLiteral                                                                          #primitiveExpression_literalAST
+                                | arrayFunctions L_PAREN expressionList R_PAREN                                         #primitiveExpression_ArrayFunctionsAST
+                                | functionLiteral                                                                       #primitiveExpression_FunctionLiteral_AST
+                                | hashLiteral                                                                           #primitiveExpression_HashLiteral_AST
+                                | printExpression                                                                       #primitiveExpression_PrintExpressionAST
+                                | ifExpression                                                                          #primitiveExpression_IfExpression;
 
 //-------------------------------------------------------------------------------------------------------------------
-arrayFunctions	                : LEN
-                                | FIRST
-                                | LAST
-                                | REST
-                                | PUSH;
+arrayFunctions	                : LEN                                                                                   #arrayFunctions_lenAST
+                                | FIRST                                                                                 #arrayFunctions_firstAST
+                                | LAST                                                                                  #arrayFunctions_lastAST
+                                | REST                                                                                  #arrayFunctions_restAST
+                                | PUSH                                                                                  #arrayFunctions_pushAST;
 
 //-------------------------------------------------------------------------------------------------------------------
-arrayLiteral                    : L_BRACK expressionList R_BRACK;
+//[...]
+arrayLiteral                    : L_BRACK expressionList R_BRACK                                                        #arrayLiteral_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-functionLiteral	                : FN L_PAREN functionParameters R_PAREN blockStatement;
+//fn (...){...}
+functionLiteral	                : FN L_PAREN functionParameters R_PAREN blockStatement                                  #functionLiteral_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-functionParameters	            : IDENT moreIdentifiers;
+//
+functionParameters	            : IDENT moreIdentifiers                                                                 #functionParameters_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-moreIdentifiers	                : (COMMA IDENT)*;
+moreIdentifiers	                : (COMMA IDENT)*                                                                        #moreIdentifiers_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-hashLiteral		                : L_BRACE hashContent moreHashContent R_BRACE;
+//{...}
+hashLiteral		                : L_BRACE hashContent moreHashContent R_BRACE                                           #hashLiteral_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-hashContent	                    : expression COLON expression;
+//
+hashContent	                    : expression COLON expression                                                           #hashContent_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-moreHashContent	                : (COMMA hashContent)*;
+
+moreHashContent	                : (COMMA hashContent)*                                                                  #moreHashContent_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-expressionList                  : expression moreExpressions | ;
+expressionList                  : expression moreExpressions                                                            #expressionList_expressionAST
+                                |                                                                                       #expressionList_nullAST
+                                ;
 
 //-------------------------------------------------------------------------------------------------------------------
-moreExpressions                 : (COMMA expression)*;
+moreExpressions                 : (COMMA expression)*                                                                   #moreExpressions_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-printExpression                 : PUTS L_PAREN expression R_PAREN;
+//puts ( ... )
+printExpression                 : PUTS L_PAREN expression R_PAREN                                                       #printExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-ifExpression	                : IF expression blockStatement (ELSE blockStatement) ?;
+//if
+ifExpression	                : IF expression blockStatement (ELSE blockStatement| )                                  #ifExpression_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
-blockStatement	                : L_BRACE statement* R_BRACE;
+//{ ... }
+blockStatement	                : L_BRACE statement* R_BRACE                                                            #blockStatement_AST;
 
 //-------------------------------------------------------------------------------------------------------------------
 

@@ -1,49 +1,38 @@
 import org.antlr.v4.runtime.*;
 import generated.*;
-import org.antlr.v4.runtime.tree.ParseTree;
+
+import java.util.ArrayList;
 
 public class MonkeyErrorListener extends BaseErrorListener {
-    public static void main(String[] args){
-        MonkeyGrammar scanner;
-        MonkeyParser parser;
-        CharStream input;
-        CommonTokenStream tokens;
-        ParseTree tree;
-        try {
-            input = CharStreams.fromFileName("test.txt");
-            scanner = new MonkeyGrammar(input);
-            tokens = new CommonTokenStream(scanner);
-            parser = new MonkeyParser(tokens);
-            MonkeyErrorListener errorListener = new MonkeyErrorListener();
-            scanner.removeErrorListeners();
-            parser.removeErrorListeners();
-            scanner.addErrorListener(errorListener);
-            parser.addErrorListener(errorListener);
-            tree = parser.program();
+    public ArrayList<String> errorMsgs = new ArrayList<String>();
 
+    public MonkeyErrorListener( )
+    {
+        this.errorMsgs = new ArrayList<String>();
+    }
 
-
-            /*
-            ContextAnalisys checkerVisistor = new ContextAnalisys();
-            checkerVisistor.visit(tree);
-            if(errorListener.hasErrors() | checkerVisistor.hasErrors()){
-                System.out.println("Compilation: Failed");
-                System.out.println(errorListener.toString());
-                checkerVisistor.printErrors();
-            }
-            else{
-                java.util.concurrent.Future<JFrame> treeGUI = org.antlr.v4.gui.Trees.inspect(tree, parser);
-                treeGUI.get().setVisible(true);
-                checkerVisistor.printErrors();
-                System.out.println("Compilation: Successful");
-            }
-
-             */
+    @Override
+    public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException re) {
+        if (recognizer instanceof MonkeyScanner){
+            errorMsgs.add(new String("SCANNER ERROR -> ("+line+", "+charPositionInLine + ") " + msg));
+        }else{
+            errorMsgs.add(new String("ERROR -> ("+line+", "+charPositionInLine + ") " + msg));
         }
-        catch(Exception e){
-            System.out.println(e.toString());
-            e.printStackTrace();
-        }
+    }
 
+    public boolean hasErrors (){
+        return this.errorMsgs.size() > 0;
+    }
+
+    @Override
+    public String toString (){
+        if (!hasErrors()) {
+            return "0 ERRORS";
+        }
+        StringBuilder builder = new StringBuilder();
+        for ( String s : errorMsgs ){
+            builder.append(String.format( "%s\n", s ));
+        }
+        return builder.toString();
     }
 }
