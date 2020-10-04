@@ -17,7 +17,7 @@ public class MonkeyParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram_AST(MonkeyParser.Program_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitProgramAST(MonkeyParser.ProgramASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -45,84 +45,84 @@ public class MonkeyParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLetStatement_AST(MonkeyParser.LetStatement_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLetStatementAST(MonkeyParser.LetStatementASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitReturnStatement_AST(MonkeyParser.ReturnStatement_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitReturnStatementAST(MonkeyParser.ReturnStatementASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressionStatement_AST(MonkeyParser.ExpressionStatement_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressionStatementAST(MonkeyParser.ExpressionStatementASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpression_AST(MonkeyParser.Expression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpressionAST(MonkeyParser.ExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitComparison_AST(MonkeyParser.Comparison_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitComparisonAST(MonkeyParser.ComparisonASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAdditionExpression_AST(MonkeyParser.AdditionExpression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAdditionExpressionAST(MonkeyParser.AdditionExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAdditionFactor_AST(MonkeyParser.AdditionFactor_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitAdditionFactorAST(MonkeyParser.AdditionFactorASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMultiplicationExpression_AST(MonkeyParser.MultiplicationExpression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMultiplicationExpressionAST(MonkeyParser.MultiplicationExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMultiplicationFactor_AST(MonkeyParser.MultiplicationFactor_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitMultiplicationFactorAST(MonkeyParser.MultiplicationFactorASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitElementExpression_AST(MonkeyParser.ElementExpression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitElementExpressionAST(MonkeyParser.ElementExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitElementAccess_AST(MonkeyParser.ElementAccess_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitElementAccessAST(MonkeyParser.ElementAccessASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCallExpression_AST(MonkeyParser.CallExpression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCallExpressionAST(MonkeyParser.CallExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -248,49 +248,35 @@ public class MonkeyParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitArrayLiteral_AST(MonkeyParser.ArrayLiteral_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArrayLiteralAST(MonkeyParser.ArrayLiteralASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionLiteral_AST(MonkeyParser.FunctionLiteral_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionLiteralAST(MonkeyParser.FunctionLiteralASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFunctionParameters_AST(MonkeyParser.FunctionParameters_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionParametersAST(MonkeyParser.FunctionParametersASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMoreIdentifiers_AST(MonkeyParser.MoreIdentifiers_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitHashLiteralAST(MonkeyParser.HashLiteralASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitHashLiteral_AST(MonkeyParser.HashLiteral_ASTContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitHashContent_AST(MonkeyParser.HashContent_ASTContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitMoreHashContent_AST(MonkeyParser.MoreHashContent_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitHashContentAST(MonkeyParser.HashContentASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -311,26 +297,19 @@ public class MonkeyParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMoreExpressions_AST(MonkeyParser.MoreExpressions_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrintExpressionAST(MonkeyParser.PrintExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrintExpression_AST(MonkeyParser.PrintExpression_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitIfExpressionAST(MonkeyParser.IfExpressionASTContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitIfExpression_AST(MonkeyParser.IfExpression_ASTContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitBlockStatement_AST(MonkeyParser.BlockStatement_ASTContext ctx) { return visitChildren(ctx); }
+	@Override public T visitBlockStatementAST(MonkeyParser.BlockStatementASTContext ctx) { return visitChildren(ctx); }
 }
