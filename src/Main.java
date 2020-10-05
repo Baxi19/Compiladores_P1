@@ -36,9 +36,12 @@ public class Main {
                 treeGUI.get().setVisible(true);
                 System.out.println("Compilation: Successful");
             }
+
         }catch(Exception e){
             System.out.println("The file doesn't exist!");e.printStackTrace();
         }
+
+
     }
 }
 
